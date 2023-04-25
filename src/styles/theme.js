@@ -1,15 +1,14 @@
 export default {
     COLORS: {
-        BACKGROUND_900: "#232129",
-        BACKGROUND_800: "#312E38",
-        BACKGROUND_700: "#3E3B47",
+        BACKGROUND_PRIMARY: "#1C1B1E",
+        BACKGROUND_INPUTS: "#262529",
+        BACKGROUND_TAGS: "#312E38",
 
-        WHITE: "#F4EDE8",
-        ORANGE: "#FF9000",
+        TEXT: "#F4EDE8",
+        TEXT_TAGS: "#E5E5E5",
+        PLACEHOLDER_NOT_ACTIVE: "#948F99",
 
-        GRAY_100: "#999591",
-        GRAY_300: "#666360",
-
-        RED: "#FF002E"
+        PINK_GLOBAL: "#FF859B",
+        DELETE: "#FF002E",
     }
 }

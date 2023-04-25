@@ -1,13 +1,15 @@
 import { Container } from "./styles"
 
 import { BackButton } from "../../components/backButton"
+import { MovieTitle } from "../../components/movieTitle"
+import { Rating } from "../../components/rating"
 
 export function Details(){
     return(
         <Container>
-            <BackButton buttonText="voltar" />
-            <h1>Interestellar</h1>
-            <span>iniciando projeto</span>
+            <BackButton buttonText="Voltar" />
+            <MovieTitle title="Interestellar" />
+            <Rating rating={4} />
         </Container>
     )
 }

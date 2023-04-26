@@ -5,7 +5,7 @@ export default {
         BACKGROUND_TAGS: "#312E38",
 
         TEXT: "#F4EDE8",
-        TEXT_TAGS: "#E5E5E5",
+        TEXT_SECONDARY: "#E5E5E5",
         PLACEHOLDER_NOT_ACTIVE: "#948F99",
 
         PINK_GLOBAL: "#FF859B",

@@ -19,14 +19,10 @@ export default createGlobalStyle`
         -webkit-font-smoothing: antialiased;
     }
 
-    body, input, button, textarea, p {
+    body, input, button, textarea {
         font-family: 'Roboto Slab', serif;
         font-size: 1.6rem;
         outline: none;
-    }
-    
-    span {
-        font-family: 'Roboto', sans-serif;
     }
 
     a {

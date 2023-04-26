@@ -1,6 +1,7 @@
 import { Container, Author } from "./styles";
 import { BiTime } from "react-icons/bi";
 
+import { Header } from "../../components/header";
 import { BackButton } from "../../components/backButton";
 import { MovieTitle } from "../../components/movieTitle";
 import { Rating } from "../../components/rating";
@@ -10,6 +11,8 @@ export function Details() {
   return (
     <Container>
       <div>
+        <Header />
+
         <BackButton buttonText="Voltar" />
         <div className="title">
           <MovieTitle title="Interestellar" />
@@ -21,9 +24,9 @@ export function Details() {
             src="https://github.com/walacecordeiro.png"
             alt="Foto do autor"
           />
-          <p>Por Walace Cordeiro</p>
+          <span>Por Walace Cordeiro</span>
           <BiTime />
-          <p>25/04/23 às 08:00</p>
+          <span>25/04/23 às 08:00</span>
         </Author>
 
         <Tag title="Ficção Científica" />

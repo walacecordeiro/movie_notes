@@ -6,4 +6,5 @@ export const Container = styled.span`
     margin-right: .8rem;
     border-radius: .8rem;
     font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
 `

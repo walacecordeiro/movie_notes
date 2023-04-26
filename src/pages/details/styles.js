@@ -1,21 +1,21 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    display: flex;
-    justify-content: center;
     width: 100%;
     height: 100vh;
 
-    div {
-        max-width: 111.3rem;
-        height: fit-content;
+    display: grid;
+    grid-template-rows: 10.5rem;
+    grid-template-areas: 
+    "header"
+    "content"
+    ;
 
-        .title {
-            display: flex;
-            align-items: center;
-            gap: 1.9rem;
-            margin-top: 2.4rem;
-        }
+    .title {
+        display: flex;
+        align-items: center;
+        gap: 1.9rem;
+        margin-top: 2.4rem;
     }
 `
 
@@ -31,7 +31,7 @@ export const Author = styled.div`
         height: 1.6rem;
 
         border-radius: 50%;
-        border: 1px solid ${({theme}) => theme.COLORS.PLACEHOLDER_NOT_ACTIVE};
+        border: 1px solid ${({ theme }) => theme.COLORS.PLACEHOLDER_NOT_ACTIVE};
     }
 
     p {
@@ -40,6 +40,6 @@ export const Author = styled.div`
 
     svg {
         width: 1.6rem;
-        color: ${({theme}) => theme.COLORS.PINK_GLOBAL};
+        color: ${({ theme }) => theme.COLORS.PINK_GLOBAL};
     }
 `

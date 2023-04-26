@@ -21,17 +21,32 @@ export const Container = styled.div`
 export const Content = styled.div`
     max-width: 111.3rem;
     margin: 0 auto;
-
+    
     display: flex;
     flex-direction: column;
     align-items: start;
-`
+    `
 
 export const TitleAndRating=styled.div`
+    position: relative;
     display: flex;
     align-items: center;
     gap: 1.9rem;
+
+    width: 100%;
     margin-top: 2.4rem;
+`
+
+export const EdgeDatail=styled.div`
+    width: .8rem;
+    height: 9.6rem;
+
+    background-color: ${({theme}) => theme.COLORS.PINK_GLOBAL};
+    border-radius: .8rem;
+
+    position: absolute;
+    top: 0;
+    right: 0;
 `
 
 export const Author = styled.div`

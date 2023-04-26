@@ -1,4 +1,4 @@
-import { Container, Content, TitleAndRating, Tags, Author } from "./styles";
+import { Container, Content, TitleAndRating, Tags, Author, EdgeDatail } from "./styles";
 import { BiTime } from "react-icons/bi";
 
 import { Header } from "../../components/header";
@@ -19,6 +19,7 @@ export function Details() {
           <TitleAndRating>
             <MovieTitle title="Interestellar" />
             <Rating rating={4} />
+            <EdgeDatail />
           </TitleAndRating>
 
           <Author>

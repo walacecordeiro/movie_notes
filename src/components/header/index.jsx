@@ -1,8 +1,12 @@
 import { Container, Profile } from "./styles";
+import { Input } from "../input";
+import { BiSearchAlt } from "react-icons/bi"
 
 export function Header(){
     return(
         <Container>
+            <Input icon={BiSearchAlt} placeholder="Pesquisar pelo título"/>
+
             <Profile>
                 <div>
                     <strong>Walace Cordeiro</strong>

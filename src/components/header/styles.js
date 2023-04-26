@@ -12,6 +12,8 @@ export const Container = styled.header`
 
     display: flex;
     padding: 0 12.3rem;
+    align-items: center;
+    justify-content: space-between;
 `
 
 export const Profile = styled.div`
@@ -23,6 +25,8 @@ export const Profile = styled.div`
         display: flex;
         flex-direction: column;
         align-items: end;
+        
+        font-size: 1.4rem;
 
         a {
             color: ${({theme}) => theme.COLORS.PLACEHOLDER_NOT_ACTIVE};

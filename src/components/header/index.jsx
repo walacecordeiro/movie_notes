@@ -1,10 +1,13 @@
 import { Container, Profile } from "./styles";
+import { Brand } from "../brand";
 import { Input } from "../input";
 import { BiSearchAlt } from "react-icons/bi"
 
 export function Header(){
     return(
         <Container>
+            <Brand />
+
             <Input icon={BiSearchAlt} placeholder="Pesquisar pelo título"/>
 
             <Profile>

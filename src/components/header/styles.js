@@ -14,6 +14,10 @@ export const Container = styled.header`
     padding: 0 12.3rem;
     align-items: center;
     justify-content: space-between;
+
+    .brand {
+        font-size: 2.4rem;
+    }
 `
 
 export const Profile = styled.div`

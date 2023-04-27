@@ -14,7 +14,7 @@ export function Header() {
         <Profile>
           <div>
             <strong>Walace Cordeiro</strong>
-            <a href="#">sair</a>
+            <a tabIndex="-1" href="#">sair</a>
           </div>
           <img
             src="https://github.com/walacecordeiro.png"

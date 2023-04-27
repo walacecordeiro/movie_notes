@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     width: 100%;
     height: 100vh;
-    padding-bottom: 2.4rem;
+    padding-bottom: 8.5rem;
     
     display: grid;
     grid-template-rows: 11.6rem 8.5rem auto;
@@ -25,7 +25,6 @@ export const Content = styled.div`
     h2 {
         font-size: 3.2rem;
         font-weight: 400;
-        padding-bottom: 4rem;
     }
 `
 
@@ -35,7 +34,7 @@ export const GoBack = styled.div`
     align-items: start;
     justify-content: center;
     gap: 2.4rem;
-
+    
     width: 120rem;
     margin: 0 auto;
 `
@@ -47,10 +46,24 @@ export const Form = styled.div`
 
     width: 120rem;
     margin: 0 auto;
+    padding-top: 4rem;
 
     .col2{
         display: flex;
         gap: 4rem;
+    }
+
+    .tags {
+        display: flex;
+        justify-content: stretch;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 2.4rem;
+
+        padding: 1.6rem;
+
+        background-color: ${({ theme }) => theme.COLORS.BACKGROUND_ZERO};
+        border-radius: 1rem;
     }
     
     h1 span {

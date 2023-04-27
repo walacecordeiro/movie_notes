@@ -14,14 +14,14 @@ export const Container = styled.div`
         
         padding: 1.9rem 1.6rem;
 
-        color: ${({theme}) => theme.COLORS.TEXT};
         background: transparent;
         border: none;
-
+        color: ${({theme}) => theme.COLORS.PLACEHOLDER_NOT_ACTIVE};
+        
         font-size: 1.4rem;
-
-        &::placeholder {
-            color: ${({theme}) => theme.COLORS.PLACEHOLDER_NOT_ACTIVE};
+        
+        :focus {
+            color: ${({theme}) => theme.COLORS.TEXT};
         }
     }
 

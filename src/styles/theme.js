@@ -1,5 +1,6 @@
 export default {
     COLORS: {
+        BACKGROUND_ZERO: "#0D0C0F",
         BACKGROUND_PRIMARY: "#1C1B1E",
         BACKGROUND_INPUTS: "#262529",
         BACKGROUND_TAGS: "#312E38",

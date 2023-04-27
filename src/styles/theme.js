@@ -3,6 +3,7 @@ export default {
         BACKGROUND_PRIMARY: "#1C1B1E",
         BACKGROUND_INPUTS: "#262529",
         BACKGROUND_TAGS: "#312E38",
+        BACKGROUND_CARDS: "rgba(255, 133, 155, 0.05)",
 
         TEXT: "#F4EDE8",
         TEXT_SECONDARY: "#E5E5E5",

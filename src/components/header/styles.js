@@ -3,20 +3,25 @@ import styled from "styled-components";
 export const Container = styled.header`
     grid-area: header;
 
-    height: 11.6rem;
     width: 100%;
-
+    
     border-bottom-width: .1rem;
     border-bottom-style: solid;
     border-bottom-color: ${({theme}) => theme.COLORS.BACKGROUND_TAGS};
-
-    display: flex;
-    padding: 0 12.3rem;
-    align-items: center;
-    justify-content: space-between;
-
+        
     .brand {
         font-size: 2.4rem;
+    }
+    
+    .wrapper {
+        width: 120rem;
+        height: 11.6rem;
+
+        margin: 0 auto;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 `
 

@@ -37,4 +37,20 @@ export default createGlobalStyle`
     button:hover, a:hover {
         filter: brightness(0.9);
     }
+
+    ::-webkit-scrollbar {
+        width: .8rem;
+        height: .8rem;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: transparent;
+        border-radius: .8rem;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: ${({ theme }) => theme.COLORS.PINK_GLOBAL};
+        border-radius: .8rem;
+    }
+
 `

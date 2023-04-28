@@ -6,12 +6,17 @@ export const Container=styled.button`
 
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     gap: .8rem;
 
     color: ${({theme}) => theme.COLORS.PINK_GLOBAL};
 
     > svg {
         font-size: 1.6rem;
+    }
+
+    transition: .3s;
+    :hover {
+        transform: skew(.312rad);
     }
 `

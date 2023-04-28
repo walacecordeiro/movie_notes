@@ -17,4 +17,9 @@ export const Container=styled.button`
     > svg {
         font-size: 1.6rem;
     }
+
+    transition: .3s;
+    :hover {
+        transform: scale(1.02);
+    }
 `

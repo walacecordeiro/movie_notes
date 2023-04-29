@@ -34,7 +34,7 @@ export function SignUp() {
 
         <Button buttonText="Cadastrar"/>
 
-        <TextLink icon={FiArrowLeft} text="Voltar para o login" route="/login"/>
+        <TextLink icon={FiArrowLeft} text="Voltar para o login" route="/"/>
       </Form>
 
       <Background />

@@ -1,6 +1,7 @@
 import { Container } from "./styles"
+import { Link } from "react-router-dom"
 
-export function Link({icon: Icon, text, link, ...rest}){
+export function TextLink({icon: Icon, text, route, ...rest}){
     return(
         <Container
         tabIndex="-1"
@@ -8,7 +9,7 @@ export function Link({icon: Icon, text, link, ...rest}){
         {...rest}
         >
             {Icon && <Icon />}
-            <a href={link}>{text}</a>
+            <Link to={route}>{text}</Link>
         </Container>
     )
 }

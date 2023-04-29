@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.header`
     grid-area: header;
@@ -8,6 +9,10 @@ export const Container = styled.header`
     border-bottom-width: .1rem;
     border-bottom-style: solid;
     border-bottom-color: ${({theme}) => theme.COLORS.BACKGROUND_TAGS};
+
+    a:hover:first-child {
+        filter: none;
+    }
         
     .brand {
         font-size: 2.4rem;
@@ -42,11 +47,13 @@ export const Profile = styled.div`
         }
     }
 
-    > img {
+    > a, img {
         width: 6.4rem;
         height: 6.4rem;
 
         border-radius: 50%;
         border: .1rem solid ${({theme}) => theme.COLORS.BACKGROUND_TAGS};
+
+        filter: none;
     }
 `

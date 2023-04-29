@@ -32,7 +32,7 @@ export default createGlobalStyle`
 
     button, a {
         cursor: pointer;
-        transition: filtter 0.2s;
+        transition: .3s;
     }
 
     button:hover, a:hover {

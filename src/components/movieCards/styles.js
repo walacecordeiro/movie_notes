@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom"
 
-export const Container = styled.div`
+export const Container = styled(Link)`
     background-color: ${({theme}) => theme.COLORS.BACKGROUND_CARDS};
+    color: inherit;
 
     height: fit-content;
     padding: 3.2rem;
@@ -10,6 +12,11 @@ export const Container = styled.div`
 
     display: flex;
     flex-direction: column;
+
+    transition: .2s;
+    :hover{
+        transform: translateX(.8rem);
+    }
 
     p {
         padding: 1.5rem 0 3rem;

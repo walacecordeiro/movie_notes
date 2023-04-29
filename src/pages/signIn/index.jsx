@@ -4,7 +4,7 @@ import { FiMail, FiLock } from "react-icons/fi"
 import { Brand } from "../../components/brand";
 import { Input } from "../../components/input"
 import { Button } from "../../components/button"
-import { Link } from "../../components/link"
+import { TextLink } from "../../components/textLink"
 
 export function SignIn() {
   return (
@@ -28,7 +28,7 @@ export function SignIn() {
 
         <Button buttonText="Entrar"/>
 
-        <Link text="Criar conta" link="#"/>
+        <TextLink text="Criar conta" route="/registrar"/>
       </Form>
 
       <Background />

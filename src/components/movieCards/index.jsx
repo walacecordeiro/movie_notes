@@ -1,11 +1,13 @@
 import { Container } from "./styles";
+import { Link } from "react-router-dom"
+
 import { MovieTitle } from "../movieTitle";
 import { Rating } from "../rating";
 import { Tag } from "../tag";
 
 export function MovieCard() {
   return (
-    <Container>
+    <Container to={`/detalhes`}>
       <MovieTitle title="Interestelar" />
 
       <Rating rating={4} />

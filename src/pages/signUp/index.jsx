@@ -4,7 +4,7 @@ import { FiUser, FiMail, FiLock, FiArrowLeft } from "react-icons/fi"
 import { Brand } from "../../components/brand";
 import { Input } from "../../components/input"
 import { Button } from "../../components/button"
-import { Link } from "../../components/link"
+import { TextLink } from "../../components/textLink"
 
 export function SignUp() {
   return (
@@ -12,7 +12,7 @@ export function SignUp() {
       <Form>
         <Brand caption="Aplicação para acompanhar tudo que assistir"/>
 
-        <h2>Faça seu login</h2>
+        <h2>Crie sua conta</h2>
 
         <Input 
         type="text"
@@ -34,7 +34,7 @@ export function SignUp() {
 
         <Button buttonText="Cadastrar"/>
 
-        <Link icon={FiArrowLeft} text="Voltar para o login" link="#"/>
+        <TextLink icon={FiArrowLeft} text="Voltar para o login" route="/login"/>
       </Form>
 
       <Background />

@@ -34,7 +34,7 @@ This project was developed with the following technologies:
 
 ## 💻 Project
 
-This project is a foundation for object-oriented programming along with API connection.
+The project is focused on the frontend, I used React to make navigation more fluid, in the future there will be a connection with an API.
 
 ## 🔖 Layout
 

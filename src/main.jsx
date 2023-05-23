@@ -1,18 +1,23 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from "styled-components";
 
-import GlobalStyleComponent from './styles/global'
-import theme from "./styles/theme"
+import GlobalStyleComponent from "./styles/global";
+import theme from "./styles/theme";
 
-import { Routes } from "./routes"
+import { LoggedContext } from "./loggedContext";
+import { Routes } from "./routes";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyleComponent />
-      <Routes />
+      <LoggedContext.Provider
+        value={{ name: "Walace", email: "walace@gmail.com" }}
+      >
+        <Routes />
+      </LoggedContext.Provider>
     </ThemeProvider>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);

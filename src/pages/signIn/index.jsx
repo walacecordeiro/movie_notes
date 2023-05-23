@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { LoggedContext } from "../../loggedContext";
+
 import { Container, Form, Background } from "./styles";
 import { FiMail, FiLock } from "react-icons/fi"
 
@@ -7,6 +10,8 @@ import { Button } from "../../components/button"
 import { TextLink } from "../../components/textLink"
 
 export function SignIn() {
+  const data = useContext(LoggedContext)
+  console.log(data)
   return (
     <Container>
       <Form>

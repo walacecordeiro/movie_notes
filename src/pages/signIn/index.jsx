@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { LoggedContext } from "../../loggedContext";
+import { useAuth } from "../../hooks/auth";
 
 import { Container, Form, Background } from "./styles";
 import { FiMail, FiLock } from "react-icons/fi"
@@ -10,8 +9,8 @@ import { Button } from "../../components/button"
 import { TextLink } from "../../components/textLink"
 
 export function SignIn() {
-  const data = useContext(LoggedContext)
-  console.log(data)
+  const data = useAuth()
+  console.log("Contexto refatorado", data)
   return (
     <Container>
       <Form>

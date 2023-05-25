@@ -1,11 +1,13 @@
 import { Container, Profile } from "./styles";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/auth"
 
 import { Brand } from "../brand";
 import { Input } from "../input";
 import { BiSearchAlt } from "react-icons/bi";
 
 export function Header() {
+  const { signOut } =  useAuth()
   return (
     <Container>
       <div className="wrapper">
@@ -20,7 +22,8 @@ export function Header() {
             <strong>Walace Cordeiro</strong>
             <a
             tabIndex="-1"
-            href="#">
+            onClick={signOut}
+            >
               sair
             </a>
           </div>

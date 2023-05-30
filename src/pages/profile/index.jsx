@@ -1,3 +1,6 @@
+import { useState } from "react"
+import { useAuth } from "../../hooks/auth"
+
 import { Container, Form, Avatar } from "./styles";
 import { FiUser, FiMail, FiLock, FiCamera } from "react-icons/fi"
 
@@ -6,6 +9,12 @@ import { Button } from "../../components/button"
 import { Input } from "../../components/input"
 
 export function Profile(){
+    const { user } = useAuth()
+
+    const [name, setName] = useState(user.user_name)
+    const [email, setEmail] = useState(user.email)
+    const [passwordOld, setPasswordOld] = useState()
+    const [passwordNew, setPasswordNew] = useState()
     return (
         <Container>
             <header>
@@ -36,24 +45,30 @@ export function Profile(){
                 placeholder="Nome de usuário"
                 type="text"
                 icon={FiUser}
+                value={name}
+                onChange={e => setName(e.target.value)}
                 />
 
                 <Input
                 placeholder="Seu e-mail mais usado"
                 type="text"
                 icon={FiMail}
+                value={email}
+                onChange={e => setEmail(e.target.value)}
                 />
 
                 <Input
                 placeholder="Senha atual"
                 type="password"
                 icon={FiLock}
+                onChange={e => setPasswordOld(e.target.value)}
                 />
                 
                 <Input
                 placeholder="Nova senha"
                 type="password"
                 icon={FiLock}
+                onChange={e => setPasswordNew(e.target.value)}
                 />
 
                 <Button buttonText="Salvar" />

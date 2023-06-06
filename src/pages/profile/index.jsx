@@ -9,12 +9,24 @@ import { Button } from "../../components/button"
 import { Input } from "../../components/input"
 
 export function Profile(){
-    const { user } = useAuth()
+    const { user, updateProfile } = useAuth()
 
-    const [name, setName] = useState(user.user_name)
+    const [user_name, setName] = useState(user.user_name)
     const [email, setEmail] = useState(user.email)
     const [passwordOld, setPasswordOld] = useState()
     const [passwordNew, setPasswordNew] = useState()
+
+    async function handleUpdate(){
+        const user = {
+            user_name,
+            email,
+            password: passwordNew,
+            old_password: passwordOld
+        }
+
+        await updateProfile({user})
+    }
+
     return (
         <Container>
             <header>
@@ -45,7 +57,7 @@ export function Profile(){
                 placeholder="Nome de usuário"
                 type="text"
                 icon={FiUser}
-                value={name}
+                value={user_name}
                 onChange={e => setName(e.target.value)}
                 />
 
@@ -71,7 +83,7 @@ export function Profile(){
                 onChange={e => setPasswordNew(e.target.value)}
                 />
 
-                <Button buttonText="Salvar" />
+                <Button buttonText="Salvar" onClick={handleUpdate}/>
             </Form>
         </Container>
     )

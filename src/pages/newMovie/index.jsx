@@ -18,6 +18,10 @@ export function NewMovie() {
     setNewTag("");
   }
 
+  function handleRemoveTag(deleted) {
+    setTags((prevState) => prevState.filter((tag) => tag !== deleted));
+  }
+
   return (
     <Container>
       <Head>
@@ -42,12 +46,11 @@ export function NewMovie() {
 
           <Section title="Marcadores">
             <div className="tags">
-
               {tags.map((tag, index) => (
                 <NewMovieTags
                   key={String(index)}
                   value={tag}
-                  onClick={() => {}}
+                  onClick={() => handleRemoveTag(tag)}
                 />
               ))}
 

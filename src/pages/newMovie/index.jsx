@@ -1,4 +1,5 @@
 import { Container, Head, Content, GoBack, Form } from "./styles";
+import { useState } from "react";
 
 import { Header } from "../../components/header";
 import { BackButton } from "../../components/backButton";
@@ -9,6 +10,14 @@ import { TextArea } from "../../components/textArea";
 import { NewMovieTags } from "../../components/NewMovieTags";
 
 export function NewMovie() {
+  const [tags, setTags] = useState([]);
+  const [newTag, setNewTag] = useState("");
+
+  function handleAddTag() {
+    setTags((prevState) => [...prevState, newTag]);
+    setNewTag("");
+  }
+
   return (
     <Container>
       <Head>
@@ -33,12 +42,22 @@ export function NewMovie() {
 
           <Section title="Marcadores">
             <div className="tags">
-              <NewMovieTags value="Suspense" />
-              <NewMovieTags value="Adrenalina" />
-              <NewMovieTags value="Terror" />
-              <NewMovieTags value="Radical" />
-              <NewMovieTags value="Romance" />
-              <NewMovieTags placeholder="Novo marcador" isNew />
+
+              {tags.map((tag, index) => (
+                <NewMovieTags
+                  key={String(index)}
+                  value={tag}
+                  onClick={() => {}}
+                />
+              ))}
+
+              <NewMovieTags
+                isNew
+                placeholder="Novo marcador"
+                onChange={(e) => setNewTag(e.target.value)}
+                value={newTag}
+                onClick={handleAddTag}
+              />
             </div>
           </Section>
 

@@ -1,5 +1,7 @@
 import { Container, Head, Content, GoBack, Form } from "./styles";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { Header } from "../../components/header";
 import { BackButton } from "../../components/backButton";
@@ -9,9 +11,17 @@ import { Input } from "../../components/input";
 import { TextArea } from "../../components/textArea";
 import { NewMovieTags } from "../../components/NewMovieTags";
 
+import { api } from "../../services/api";
+
 export function NewMovie() {
+  const [title, setTitle] = useState(" ");
+  const [rating, setRating] = useState(" ");
+  const [description, setDescription] = useState(" ");
+
   const [tags, setTags] = useState([]);
   const [newTag, setNewTag] = useState("");
+
+  const navigate = useNavigate();
 
   function handleAddTag() {
     setTags((prevState) => [...prevState, newTag]);
@@ -20,6 +30,22 @@ export function NewMovie() {
 
   function handleRemoveTag(deleted) {
     setTags((prevState) => prevState.filter((tag) => tag !== deleted));
+  }
+
+  function cancel(){
+    navigate("/")
+  }
+
+  async function handleNewMovieNote() {
+    await api.post("/movie_notes", {
+      title,
+      rating,
+      description,
+      tags,
+    });
+
+    alert("Nota do filme criada com sucesso!");
+    navigate("/");
   }
 
   return (
@@ -36,12 +62,22 @@ export function NewMovie() {
         <h2>Novo filme</h2>
         <Form>
           <div className="col2">
-            <Input placeholder="Título" />
-            <Input placeholder="Sua nota (de 0 a 5)" />
+            <Input
+              placeholder="Título"
+              onChange={(e) => setTitle(e.target.value)}
+            />
+
+            <Input
+              placeholder="Sua nota (de 0 a 5)"
+              onChange={(e) => setRating(e.target.value)}
+            />
           </div>
 
           <div>
-            <TextArea placeholder="Observações" />
+            <TextArea
+              placeholder="Observações"
+              onChange={(e) => setDescription(e.target.value)}
+            />
           </div>
 
           <Section title="Marcadores">
@@ -65,8 +101,8 @@ export function NewMovie() {
           </Section>
 
           <div className="col2">
-            <Button buttonText="Excluir filme" />
-            <Button buttonText="Salvar alterações" />
+            <Button buttonText="Cancelar" onClick={cancel}/>
+            <Button buttonText="Adicionar Nota" onClick={handleNewMovieNote} />
           </div>
         </Form>
       </Content>

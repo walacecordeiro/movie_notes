@@ -2,7 +2,7 @@
 // import { Container } from './styles';
 
 // export function TextArea({ value, ...rest }) {
-//   const [text, setText] = useState(value || '');
+//   const [description, setDescription] = useState(value || '');
 //   const textareaRef = useRef(null);
 
 //   useEffect(() => {
@@ -10,16 +10,16 @@
 //       textareaRef.current.style.height = 'auto';
 //       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
 //     }
-//   }, [text]);
+//   }, [description]);
 
 //   const handleChange = (event) => {
-//     setText(event.target.value);
+//     setDescription(event.target.value);
 //   };
 
 //   return (
 //     <Container
 //       ref={textareaRef}
-//       value={text}
+//       value={description}
 //       onChange={handleChange}
 //       {...rest}
 //     />

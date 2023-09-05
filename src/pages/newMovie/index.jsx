@@ -1,7 +1,6 @@
 import { Container, Head, Content, GoBack, Form } from "./styles";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 import { Header } from "../../components/header";
 import { BackButton } from "../../components/backButton";
@@ -32,11 +31,29 @@ export function NewMovie() {
     setTags((prevState) => prevState.filter((tag) => tag !== deleted));
   }
 
-  function cancel(){
-    navigate("/")
+  function cancel() {
+    navigate("/");
   }
 
   async function handleNewMovieNote() {
+    if (!title.trim()) {
+      return alert("Digite o título do filme");
+    }
+
+    if (!rating.trim()) {
+      return alert("Digite a nota do filme");
+    }
+
+    if (isNaN(rating) || rating < 1 || rating > 5) {
+      return alert("Digite uma nota válida (número de 1 a 5) no campo Nota");
+    }
+
+    if (newTag.trim()) {
+      return alert(
+        "Voçê deixou um marcador no campo para adicionar, mas não clicou em adicionar. Clique para adicionar ou deixe o campo vázio."
+      );
+    }
+
     await api.post("/movie_notes", {
       title,
       rating,
@@ -68,7 +85,7 @@ export function NewMovie() {
             />
 
             <Input
-              placeholder="Sua nota (de 0 a 5)"
+              placeholder="Sua nota (de 1 a 5)"
               onChange={(e) => setRating(e.target.value)}
             />
           </div>
@@ -101,7 +118,7 @@ export function NewMovie() {
           </Section>
 
           <div className="col2">
-            <Button buttonText="Cancelar" onClick={cancel}/>
+            <Button buttonText="Cancelar" onClick={cancel} />
             <Button buttonText="Adicionar Nota" onClick={handleNewMovieNote} />
           </div>
         </Form>

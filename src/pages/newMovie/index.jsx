@@ -7,6 +7,7 @@ import { BackButton } from "../../components/backButton";
 import { Button } from "../../components/button";
 import { Section } from "../../components/section";
 import { Input } from "../../components/input";
+import { Rating } from "../../components/rating";
 import { TextArea } from "../../components/textArea";
 import { NewMovieTags } from "../../components/NewMovieTags";
 
@@ -14,7 +15,7 @@ import { api } from "../../services/api";
 
 export function NewMovie() {
   const [title, setTitle] = useState(" ");
-  const [rating, setRating] = useState(" ");
+  const [rating, setRating] = useState(0);
   const [description, setDescription] = useState(" ");
 
   const [tags, setTags] = useState([]);
@@ -40,12 +41,12 @@ export function NewMovie() {
       return alert("Digite o título do filme");
     }
 
-    if (!rating.trim()) {
-      return alert("Digite a nota do filme");
+    if (!rating) {
+      return alert("Selecione uma nota para o filme");
     }
 
-    if (isNaN(rating) || rating < 1 || rating > 5) {
-      return alert("Digite uma nota válida (número de 1 a 5) no campo Nota");
+    if (!description.trim()) {
+      return alert("Em observações forneça um pequeno resumo");
     }
 
     if (newTag.trim()) {
@@ -83,10 +84,12 @@ export function NewMovie() {
               placeholder="Título"
               onChange={(e) => setTitle(e.target.value)}
             />
-
-            <Input
-              placeholder="Sua nota (de 1 a 5)"
-              onChange={(e) => setRating(e.target.value)}
+            <span>Dê uma nota </span>
+            <Rating
+              rating={rating}
+              onChange={(selectedRating) => setRating(selectedRating)}
+              hoverEnabled={true}
+              className="rating"
             />
           </div>
 

@@ -51,6 +51,12 @@ export const Form = styled.div`
     .col2{
         display: flex;
         gap: 4rem;
+        align-items: center;
+
+        span {
+            font-size: 1.4rem;
+            color: ${({ theme }) => theme.COLORS.PLACEHOLDER_NOT_ACTIVE};
+        }
     }
 
     .tags {
@@ -65,17 +71,15 @@ export const Form = styled.div`
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_ZERO};
         border-radius: 1rem;
     }
-    
-    h1 span {
-        font-size: 2.4rem;
-    }
-
-    span {
-        font-size: 2rem;
-    }
 
     svg {
-        width: 1.2rem;
+        width: 2.5rem;
+        transition: .2s;
+    }
+    
+    svg:hover {
+        transform: scale(1.8);
+        cursor: pointer;
     }
 
     button {

@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const Container = styled.div`
     width: 100%;
 
+    padding-bottom: 5rem;
+
     > header {
         width: 100%;
         height: 14.4rem;

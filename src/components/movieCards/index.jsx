@@ -10,14 +10,14 @@ export function MovieCard({ data, ...rest }) {
     <Container to={`/detalhes`} {...rest}>
       <MovieTitle title={data.title} />
 
-      <Rating rating={data.rating} />
+      <Rating rating={data.rating} hoverEnabled={false}/>
 
       <p>{data.description}</p>
 
       {data.tags && (
         <div>
           {data.tags.map((tag) => (
-            <Tag key={tag.id} title={tag.name} />
+            <Tag key={tag.id} title={tag.tags} />
           ))}
         </div>
       )}

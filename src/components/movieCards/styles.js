@@ -25,4 +25,8 @@ export const Container = styled(Link)`
     h1 {
         padding-bottom: .5rem;
     }
+
+    svg {
+        width: 1.5rem;
+    }
 `

@@ -18,7 +18,7 @@ export function Details() {
 
           <TitleAndRating>
             <MovieTitle title="Interestellar" />
-            <Rating rating={4} />
+            <Rating rating={4} hoverEnabled={false} />
           </TitleAndRating>
 
           <Author>

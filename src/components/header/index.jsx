@@ -9,7 +9,7 @@ import { Brand } from "../brand";
 import { Input } from "../input";
 import { BiSearchAlt } from "react-icons/bi";
 
-export function Header() {
+export function Header({ search }) {
   const { signOut, user } =  useAuth()
 
   const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
@@ -21,7 +21,7 @@ export function Header() {
           <Brand />
         </Link>
 
-        <Input icon={BiSearchAlt} placeholder="Pesquisar pelo título" />
+        <Input icon={BiSearchAlt} placeholder="Pesquisar pelo título" onChange={search}/>
 
         <Profile>
           <div>

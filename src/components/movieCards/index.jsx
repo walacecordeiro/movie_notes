@@ -1,5 +1,4 @@
 import { Container } from "./styles";
-import { Link } from "react-router-dom";
 
 import { MovieTitle } from "../movieTitle";
 import { Rating } from "../rating";
@@ -7,7 +6,7 @@ import { Tag } from "../tag";
 
 export function MovieCard({ data, ...rest }) {
   return (
-    <Container to={`/detalhes`} {...rest}>
+    <Container {...rest}>
       <MovieTitle title={data.title} />
 
       <Rating rating={data.rating} hoverEnabled={false}/>
@@ -17,7 +16,7 @@ export function MovieCard({ data, ...rest }) {
       {data.tags && (
         <div>
           {data.tags.map((tag) => (
-            <Tag key={tag.id} title={tag.tags} />
+            <Tag key={String(tag.id)} title={tag.tags} />
           ))}
         </div>
       )}

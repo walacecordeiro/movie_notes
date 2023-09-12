@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom"
 
-export const Container = styled(Link)`
+export const Container = styled.div`
     background-color: ${({theme}) => theme.COLORS.BACKGROUND_CARDS};
     color: inherit;
 
@@ -16,6 +16,7 @@ export const Container = styled(Link)`
     transition: .2s;
     :hover{
         transform: translateX(.8rem);
+        cursor: pointer;
     }
 
     p {

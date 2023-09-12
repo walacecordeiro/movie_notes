@@ -1,180 +1,80 @@
-import { Container, Content, TitleAndRating, Tags, Author } from "./styles";
-import { BiTime } from "react-icons/bi";
+import { useEffect, useState } from "react"
+import { Container, Content, TitleAndRating, Tags, Author } from "./styles"
+import { useParams } from "react-router-dom"
 
-import { Header } from "../../components/header";
-import { BackButton } from "../../components/backButton";
-import { MovieTitle } from "../../components/movieTitle";
-import { Rating } from "../../components/rating";
-import { Tag } from "../../components/tag";
+import { format } from "date-fns"
+import ptBR from "date-fns/locale/pt-BR"
+
+import { api } from "../../services/api"
+import { useAuth } from "../../hooks/auth"
+import avatarPlaceholder from "../../assets/avatar_placeholder.svg"
+
+import { BiTime } from "react-icons/bi"
+
+import { Header } from "../../components/header"
+import { BackButton } from "../../components/backButton"
+import { MovieTitle } from "../../components/movieTitle"
+import { Rating } from "../../components/rating"
+import { Tag } from "../../components/tag"
 
 export function Details() {
+  const { user } = useAuth()
+
+  const [data, setData] = useState(null)
+  const params = useParams()
+
+  const avatarUrl = user.avatar
+    ? `${api.defaults.baseURL}/files/${user.avatar}`
+    : avatarPlaceholder
+
+  function formatDate(date) {
+    return format(new Date(date), "dd/MM/yyyy 'às' HH:mm", {
+      locale: ptBR,
+      timeZone: "America/Sao_Paulo",
+    })
+  }
+
+  useEffect(() => {
+    async function fetchNote() {
+      const response = await api.get(`/movie_notes/${params.id}`)
+      setData(response.data)
+    }
+
+    fetchNote()
+  }, [])
+
   return (
     <Container>
       <Header />
+      {data && (
+        <main>
+          <Content>
+            <BackButton buttonText="Voltar" />
 
-      <main>
-        <Content>
-          <BackButton buttonText="Voltar" />
+            <TitleAndRating>
+              <MovieTitle title={data.title} />
+              <Rating rating={data.rating} hoverEnabled={false} />
+            </TitleAndRating>
 
-          <TitleAndRating>
-            <MovieTitle title="Interestellar" />
-            <Rating rating={4} hoverEnabled={false} />
-          </TitleAndRating>
+            <Author>
+              <img src={avatarUrl} alt={`Foto do autor ${user.user_name}`} />
+              <span>Por {user.user_name}</span>
+              <BiTime />
+              <span>{formatDate(data.created_at)}</span>
+            </Author>
 
-          <Author>
-            <img
-              src="https://github.com/walacecordeiro.png"
-              alt="Foto do autor"
-            />
-            <span>Por Walace Cordeiro</span>
-            <BiTime />
-            <span>25/04/23 às 08:00</span>
-          </Author>
+            {data.movie_tags && (
+              <Tags>
+                {data.movie_tags.map((tags) => (
+                  <Tag key={String(tags.id)} title={tags.tags} />
+                ))}
+              </Tags>
+            )}
 
-          <Tags>
-            <Tag title="Ficção Científica" />
-            <Tag title="Drama" />
-            <Tag title="Família" />
-          </Tags>
-
-          <p>
-            Pragas nas colheitas fizeram a civilização humana regredir para uma
-            sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto
-            da NASA, tem uma fazenda com sua família. Murphy, a filha de dez
-            anos de Cooper, acredita que seu quarto está assombrado por um
-            fantasma que tenta se comunicar com ela. Pai e filha descobrem que o
-            "fantasma" é uma inteligência desconhecida que está enviando
-            mensagens codificadas através de radiação gravitacional, deixando
-            coordenadas em binário que os levam até uma instalação secreta da
-            NASA liderada pelo professor John Brand. O cientista revela que um
-            buraco de minhoca foi aberto perto de Saturno e que ele leva a
-            planetas que podem oferecer condições de sobrevivência para a
-            espécie humana. As "missões Lázaro" enviadas anos antes
-            identificaram três planetas potencialmente habitáveis orbitando o
-            buraco negro Gargântua: Miller, Edmunds e Mann – nomeados em
-            homenagem aos astronautas que os pesquisaram. Brand recruta Cooper
-            para pilotar a nave espacial Endurance e recuperar os dados dos
-            astronautas; se um dos planetas se mostrar habitável, a humanidade
-            irá seguir para ele na instalação da NASA, que é na realidade uma
-            enorme estação espacial. A partida de Cooper devasta Murphy.
-            <br />
-            <br />
-            Além de Cooper, a tripulação da Endurance é formada pela bióloga
-            Amelia, filha de Brand; o cientista Romilly, o físico planetário
-            Doyle, além dos robôs TARS e CASE. Eles entram no buraco de minhoca
-            e se dirigem a Miller, porém descobrem que o planeta possui enorme
-            dilatação gravitacional temporal por estar tão perto de Gargântua:
-            cada hora na superfície equivale a sete anos na Terra. Eles entram
-            em Miller e descobrem que é inóspito já que é coberto por um oceano
-            raso e agitado por ondas enormes. Uma onda atinge a tripulação
-            enquanto Amelia tenta recuperar os dados de Miller, matando Doyle e
-            atrasando a partida. Ao voltarem para a Endurance, Cooper e Amelia
-            descobrem que 23 anos se passaram.
-          </p>
-          <p>
-            Pragas nas colheitas fizeram a civilização humana regredir para uma
-            sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto
-            da NASA, tem uma fazenda com sua família. Murphy, a filha de dez
-            anos de Cooper, acredita que seu quarto está assombrado por um
-            fantasma que tenta se comunicar com ela. Pai e filha descobrem que o
-            "fantasma" é uma inteligência desconhecida que está enviando
-            mensagens codificadas através de radiação gravitacional, deixando
-            coordenadas em binário que os levam até uma instalação secreta da
-            NASA liderada pelo professor John Brand. O cientista revela que um
-            buraco de minhoca foi aberto perto de Saturno e que ele leva a
-            planetas que podem oferecer condições de sobrevivência para a
-            espécie humana. As "missões Lázaro" enviadas anos antes
-            identificaram três planetas potencialmente habitáveis orbitando o
-            buraco negro Gargântua: Miller, Edmunds e Mann – nomeados em
-            homenagem aos astronautas que os pesquisaram. Brand recruta Cooper
-            para pilotar a nave espacial Endurance e recuperar os dados dos
-            astronautas; se um dos planetas se mostrar habitável, a humanidade
-            irá seguir para ele na instalação da NASA, que é na realidade uma
-            enorme estação espacial. A partida de Cooper devasta Murphy.
-            <br />
-            <br />
-            Além de Cooper, a tripulação da Endurance é formada pela bióloga
-            Amelia, filha de Brand; o cientista Romilly, o físico planetário
-            Doyle, além dos robôs TARS e CASE. Eles entram no buraco de minhoca
-            e se dirigem a Miller, porém descobrem que o planeta possui enorme
-            dilatação gravitacional temporal por estar tão perto de Gargântua:
-            cada hora na superfície equivale a sete anos na Terra. Eles entram
-            em Miller e descobrem que é inóspito já que é coberto por um oceano
-            raso e agitado por ondas enormes. Uma onda atinge a tripulação
-            enquanto Amelia tenta recuperar os dados de Miller, matando Doyle e
-            atrasando a partida. Ao voltarem para a Endurance, Cooper e Amelia
-            descobrem que 23 anos se passaram.
-          </p>
-          <p>
-            Pragas nas colheitas fizeram a civilização humana regredir para uma
-            sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto
-            da NASA, tem uma fazenda com sua família. Murphy, a filha de dez
-            anos de Cooper, acredita que seu quarto está assombrado por um
-            fantasma que tenta se comunicar com ela. Pai e filha descobrem que o
-            "fantasma" é uma inteligência desconhecida que está enviando
-            mensagens codificadas através de radiação gravitacional, deixando
-            coordenadas em binário que os levam até uma instalação secreta da
-            NASA liderada pelo professor John Brand. O cientista revela que um
-            buraco de minhoca foi aberto perto de Saturno e que ele leva a
-            planetas que podem oferecer condições de sobrevivência para a
-            espécie humana. As "missões Lázaro" enviadas anos antes
-            identificaram três planetas potencialmente habitáveis orbitando o
-            buraco negro Gargântua: Miller, Edmunds e Mann – nomeados em
-            homenagem aos astronautas que os pesquisaram. Brand recruta Cooper
-            para pilotar a nave espacial Endurance e recuperar os dados dos
-            astronautas; se um dos planetas se mostrar habitável, a humanidade
-            irá seguir para ele na instalação da NASA, que é na realidade uma
-            enorme estação espacial. A partida de Cooper devasta Murphy.
-            <br />
-            <br />
-            Além de Cooper, a tripulação da Endurance é formada pela bióloga
-            Amelia, filha de Brand; o cientista Romilly, o físico planetário
-            Doyle, além dos robôs TARS e CASE. Eles entram no buraco de minhoca
-            e se dirigem a Miller, porém descobrem que o planeta possui enorme
-            dilatação gravitacional temporal por estar tão perto de Gargântua:
-            cada hora na superfície equivale a sete anos na Terra. Eles entram
-            em Miller e descobrem que é inóspito já que é coberto por um oceano
-            raso e agitado por ondas enormes. Uma onda atinge a tripulação
-            enquanto Amelia tenta recuperar os dados de Miller, matando Doyle e
-            atrasando a partida. Ao voltarem para a Endurance, Cooper e Amelia
-            descobrem que 23 anos se passaram.
-          </p>
-          <p>
-            Pragas nas colheitas fizeram a civilização humana regredir para uma
-            sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto
-            da NASA, tem uma fazenda com sua família. Murphy, a filha de dez
-            anos de Cooper, acredita que seu quarto está assombrado por um
-            fantasma que tenta se comunicar com ela. Pai e filha descobrem que o
-            "fantasma" é uma inteligência desconhecida que está enviando
-            mensagens codificadas através de radiação gravitacional, deixando
-            coordenadas em binário que os levam até uma instalação secreta da
-            NASA liderada pelo professor John Brand. O cientista revela que um
-            buraco de minhoca foi aberto perto de Saturno e que ele leva a
-            planetas que podem oferecer condições de sobrevivência para a
-            espécie humana. As "missões Lázaro" enviadas anos antes
-            identificaram três planetas potencialmente habitáveis orbitando o
-            buraco negro Gargântua: Miller, Edmunds e Mann – nomeados em
-            homenagem aos astronautas que os pesquisaram. Brand recruta Cooper
-            para pilotar a nave espacial Endurance e recuperar os dados dos
-            astronautas; se um dos planetas se mostrar habitável, a humanidade
-            irá seguir para ele na instalação da NASA, que é na realidade uma
-            enorme estação espacial. A partida de Cooper devasta Murphy.
-            <br />
-            <br />
-            Além de Cooper, a tripulação da Endurance é formada pela bióloga
-            Amelia, filha de Brand; o cientista Romilly, o físico planetário
-            Doyle, além dos robôs TARS e CASE. Eles entram no buraco de minhoca
-            e se dirigem a Miller, porém descobrem que o planeta possui enorme
-            dilatação gravitacional temporal por estar tão perto de Gargântua:
-            cada hora na superfície equivale a sete anos na Terra. Eles entram
-            em Miller e descobrem que é inóspito já que é coberto por um oceano
-            raso e agitado por ondas enormes. Uma onda atinge a tripulação
-            enquanto Amelia tenta recuperar os dados de Miller, matando Doyle e
-            atrasando a partida. Ao voltarem para a Endurance, Cooper e Amelia
-            descobrem que 23 anos se passaram.
-          </p>
-        </Content>
-      </main>
+            <p>{data.description}</p>
+          </Content>
+        </main>
+      )}
     </Container>
-  );
+  )
 }

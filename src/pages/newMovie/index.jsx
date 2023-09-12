@@ -16,7 +16,7 @@ import { api } from "../../services/api";
 export function NewMovie() {
   const [title, setTitle] = useState(" ");
   const [rating, setRating] = useState(0);
-  const [description, setDescription] = useState(" ");
+  const [description, setDescription] = useState(` `);
 
   const [tags, setTags] = useState([]);
   const [newTag, setNewTag] = useState("");

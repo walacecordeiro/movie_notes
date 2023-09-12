@@ -5,7 +5,6 @@ export const Container = styled.div`
     height: 100vh;
     padding-bottom: 2.4rem;
 
-
     display: grid;
     grid-template-rows: 11.6rem 13.2rem auto;
 `
@@ -41,6 +40,10 @@ export const Content = styled.div`
     
     h1 span {
         font-size: 2.4rem;
+    }
+    
+    p {
+        white-space: pre-wrap;
     }
 
     svg {

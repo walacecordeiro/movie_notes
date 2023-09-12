@@ -31,7 +31,15 @@ export const Content = styled.div`
     white-space: pre-wrap;
     margin-right: 1.6rem;
   }
-`;
+
+  Button:nth-child(6) {
+    align-self: flex-end;
+    color: white;
+    margin-top: 4rem;
+    margin-right: 1.6rem;
+    background-color: ${({ theme }) => theme.COLORS.DELETE};
+  }
+`
 
 export const TitleAndRating = styled.div`
   display: flex;

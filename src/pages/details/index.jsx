@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { Container, Content, TitleAndRating, Tags, Author } from "./styles"
 import { useParams } from "react-router-dom"
 
@@ -10,15 +11,19 @@ import { useAuth } from "../../hooks/auth"
 import avatarPlaceholder from "../../assets/avatar_placeholder.svg"
 
 import { BiTime } from "react-icons/bi"
+import { FaTrashAlt } from "react-icons/fa"
 
 import { Header } from "../../components/header"
 import { BackButton } from "../../components/backButton"
+import { Button } from "../../components/button"
 import { MovieTitle } from "../../components/movieTitle"
 import { Rating } from "../../components/rating"
 import { Tag } from "../../components/tag"
 
 export function Details() {
   const { user } = useAuth()
+
+  const navigate = useNavigate()
 
   const [data, setData] = useState(null)
   const params = useParams()
@@ -32,6 +37,15 @@ export function Details() {
       locale: ptBR,
       timeZone: "America/Sao_Paulo",
     })
+  }
+
+  async function handleRemove() {
+    const confirm = window.confirm("Deseja realmente excluir a nota?")
+
+    if (confirm) {
+      await api.delete(`/movie_notes/${params.id}`)
+      navigate("/")
+    }
   }
 
   useEffect(() => {
@@ -72,6 +86,12 @@ export function Details() {
             )}
 
             <p>{data.description}</p>
+
+            <Button
+              icon={FaTrashAlt}
+              buttonText="Excluir"
+              onClick={handleRemove}
+            />
           </Content>
         </main>
       )}

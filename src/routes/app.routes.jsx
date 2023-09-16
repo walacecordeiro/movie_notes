@@ -1,6 +1,6 @@
 import {Routes, Route} from "react-router-dom"
 
-import { Details } from "../pages/Details"
+import { Details } from "../pages/details"
 import { Home } from "../pages/home"
 import { NewMovie } from "../pages/newMovie"
 import { Profile } from "../pages/profile"

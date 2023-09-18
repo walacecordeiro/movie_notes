@@ -46,6 +46,27 @@ export const Content = styled.div`
     white-space: pre-wrap;
   }
 
+  .loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+
+    user-select: none;
+
+    svg {
+      width: 20rem;
+      height: 20rem;
+      margin-bottom: 4rem;
+      color: ${({ theme }) => theme.COLORS.PINK_GLOBAL};
+    }
+
+    h3 {
+      color: ${({ theme }) => theme.COLORS.PLACEHOLDER_NOT_ACTIVE};
+    }
+  }
   .noNotes {
     display: flex;
     flex-direction: column;

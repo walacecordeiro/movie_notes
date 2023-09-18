@@ -1,6 +1,7 @@
 import { Container, Head, MyMovies, Content } from "./styles"
 import { AiOutlinePlus } from "react-icons/ai"
 import { TfiFaceSad } from "react-icons/tfi"
+import { BiLoaderCircle } from "react-icons/bi"
 import { Link, useNavigate } from "react-router-dom"
 
 import { api } from "../../services/api"
@@ -13,6 +14,7 @@ import { Button } from "../../components/button"
 export function Home() {
   const [search, setSearch] = useState("")
   const [movieNotes, setMovieNotes] = useState([])
+  const [loading, setLoading] = useState(true)
 
   const navigate = useNavigate()
 
@@ -24,6 +26,7 @@ export function Home() {
     async function fetchNotes() {
       const response = await api.get(`/movie_notes?title=${search}`)
       setMovieNotes(response.data)
+      setLoading(false)
     }
 
     fetchNotes()
@@ -43,10 +46,15 @@ export function Home() {
       </MyMovies>
 
       <Content>
-        {movieNotes.length === 0 ? (
+        {loading ? (
+          <div className="loading">
+            <BiLoaderCircle />
+            <h3>Carregando...</h3>
+          </div>
+        ) : movieNotes.length === 0 ? (
           <div className="noNotes">
             <TfiFaceSad />
-            <h3>Nenhum filme encontrado</h3>
+            <h3>Você ainda não adicionou nehum filme</h3>
           </div>
         ) : (
           movieNotes.map((note) => (

@@ -56,11 +56,9 @@ export const Content = styled.div`
 
     user-select: none;
 
-    svg {
-      width: 20rem;
-      height: 20rem;
+    img {
+      width: 15rem;
       margin-bottom: 4rem;
-      color: ${({ theme }) => theme.COLORS.PINK_GLOBAL};
     }
 
     h3 {

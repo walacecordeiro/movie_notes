@@ -1,7 +1,7 @@
 import { Container, Head, MyMovies, Content } from "./styles"
 import { AiOutlinePlus } from "react-icons/ai"
 import { TfiFaceSad } from "react-icons/tfi"
-import { BiLoaderCircle } from "react-icons/bi"
+import loadingGif from "../../assets/loading.gif"
 import { Link, useNavigate } from "react-router-dom"
 
 import { api } from "../../services/api"
@@ -48,7 +48,7 @@ export function Home() {
       <Content>
         {loading ? (
           <div className="loading">
-            <BiLoaderCircle />
+            <img src={loadingGif} alt="Carregando..." />
             <h3>Carregando...</h3>
           </div>
         ) : movieNotes.length === 0 ? (

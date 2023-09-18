@@ -32,12 +32,12 @@ export function Details() {
     ? `${api.defaults.baseURL}/files/${user.avatar}`
     : avatarPlaceholder
 
-  function formatDate(date) {
-    return format(new Date(date), "dd/MM/yyyy 'às' HH:mm", {
-      locale: ptBR,
-      timeZone: "America/Sao_Paulo",
-    })
-  }
+  // function formatDate(date) {
+  //   return format(new Date(date), "dd/MM/yyyy 'às' HH:mm", {
+  //     locale: ptBR,
+  //     timeZone: "America/Sao_Paulo",
+  //   })
+  // }
 
   async function handleRemove() {
     const confirm = window.confirm("Deseja realmente excluir a nota?")
@@ -51,6 +51,7 @@ export function Details() {
   useEffect(() => {
     async function fetchNote() {
       const response = await api.get(`/movie_notes/${params.id}`)
+      console.log(response)
       setData(response.data)
     }
 
@@ -74,7 +75,8 @@ export function Details() {
               <img src={avatarUrl} alt={`Foto do autor ${user.user_name}`} />
               <span>Por {user.user_name}</span>
               <BiTime />
-              <span>{formatDate(data.created_at)}</span>
+              {/* <span>{formatDate(data.created_at)}</span> */}
+              <span>{data.created_at}</span>
             </Author>
 
             {data.movie_tags && (

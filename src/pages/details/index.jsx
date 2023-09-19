@@ -51,7 +51,6 @@ export function Details() {
   useEffect(() => {
     async function fetchNote() {
       const response = await api.get(`/movie_notes/${params.id}`)
-      console.log(response)
       setData(response.data)
     }
 
